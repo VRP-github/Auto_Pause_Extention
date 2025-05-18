@@ -1,4 +1,4 @@
-# YouTube Smart Pause 🎬
+# Auto_Pause_Extention 🎬
 
 A Chrome extension that **automatically pauses YouTube videos** when the user is inactive or not detected in front of the screen using face detection.  
 Ideal for students, professionals, or anyone who doesn’t want to miss video content while away.
