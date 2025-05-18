@@ -20,4 +20,4 @@ Ideal for students, professionals, or anyone who doesn’t want to miss video co
 
 1. Download or clone the repository:
    ```bash
-   git clone https://github.com/your-username/youtube-smart-pause.git
+   git clone https://github.com/VRP-github/youtube-smart-pause.git
