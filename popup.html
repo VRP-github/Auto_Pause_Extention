@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>YouTube Auto Pause</title>
+  <style>
+    :root {
+      --bg-color: #f0f2f5;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --subtext-color: #555;
+      --border-color: #ccc;
+      --button-bg: #3f51b5;
+      --button-hover: #303f9f;
+      --button-reset-bg: #e0e0e0;
+      --button-reset-hover: #c0c0c0;
+      --success-color: #2e7d32;
+      --error-color: #d32f2f;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1e1e1e;
+        --card-bg: #2c2c2c;
+        --text-color: #f0f0f0;
+        --subtext-color: #b0b0b0;
+        --border-color: #444;
+        --button-bg: #5c6bc0;
+        --button-hover: #3f51b5;
+        --button-reset-bg: #444;
+        --button-reset-hover: #666;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Inter', sans-serif;
+      background: var(--bg-color);
+      padding: 16px;
+      width: 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px 18px;
+      width: 100%;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin-bottom: 14px;
+      color: var(--text-color);
+      text-align: center;
+    }
+
+    .input-box {
+      margin-bottom: 12px;
+    }
+
+    .input-box input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      font-size: 14px;
+      background: transparent;
+      color: var(--text-color);
+      outline: none;
+    }
+
+    .input-box input:focus {
+      border-color: var(--button-bg);
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      opacity: 0.4;
+      transition: opacity 0.2s ease;
+      margin: 0;
+    }
+
+    input[type=number]:hover::-webkit-inner-spin-button,
+    input[type=number]:hover::-webkit-outer-spin-button {
+      opacity: 0.7;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: none;
+    }
+
+    #saveBtn {
+      background: var(--button-bg);
+      color: white;
+    }
+
+    #saveBtn:hover {
+      background: var(--button-hover);
+    }
+
+    #resetBtn {
+      background: var(--button-reset-bg);
+      color: var(--text-color);
+    }
+
+    #resetBtn:hover {
+      background: var(--button-reset-hover);
+    }
+
+    #currentTimeout {
+      font-size: 13px;
+      margin-top: 14px;
+      color: var(--subtext-color);
+      text-align: center;
+    }
+
+    #statusMessage {
+      font-size: 13px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    #statusMessage.success {
+      color: var(--success-color);
+    }
+
+    #statusMessage.error {
+      color: var(--error-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Set Inactivity Timeout</h2>
+
+    <div class="input-box">
+      <input type="number" id="timeoutSecondsTotal" min="1" placeholder="Enter total seconds (e.g. 90)" />
+    </div>
+
+    <!-- ✅ Face Detection Toggle -->
+    <div class="input-box">
+      <label style="font-size: 14px; color: var(--text-color); display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox" id="faceDetectionToggle" style="transform: scale(1.2);" />
+        Pause when face not detected
+      </label>
+    </div>
+
+    <div class="button-row">
+      <button id="saveBtn">Save</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <p id="currentTimeout"></p>
+    <p id="statusMessage"></p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

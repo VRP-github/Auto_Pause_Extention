@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Smart Pause",
+  "version": "1.0",
+  "description": "Automatically pauses YouTube videos after inactivity or when face is not detected.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "icons": {
+    "16": "Logo.png",
+    "48": "Logo.png",
+    "128": "Logo.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Set Inactivity Timeout",
+    "default_icon": {
+      "16": "Logo.png",
+      "48": "Logo.png",
+      "128": "Logo.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["models/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": [
+        "face-api.min.js",
+        "face-check.js",
+        "content.js"
+      ]
+    }
+  ]
+}
